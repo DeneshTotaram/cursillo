@@ -1,0 +1,28 @@
+{
+  "name": "Location",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "weekends": {
+      "type": "hasMany",
+      "model": "Weekend",
+      "foreignKey": ""
+    },
+    "cursillo": {
+      "type": "belongsTo",
+      "model": "Cursillo",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

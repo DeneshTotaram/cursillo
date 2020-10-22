@@ -1,0 +1,28 @@
+{
+  "name": "Cursillo",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "locations": {
+      "type": "hasMany",
+      "model": "Location",
+      "foreignKey": ""
+    },
+    "parishes": {
+      "type": "hasMany",
+      "model": "Parish",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

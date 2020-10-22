@@ -1,0 +1,3975 @@
+{
+  "swagger":"2.0",
+  "info":{
+    "description":"This is the Cursillo Swagger documentation.",
+    "version":"1.0.0",
+    "title":"Cursillo Swagger "
+  },
+  "host":"localhost",
+  "basePath":":8080/api/",
+  "tags":[
+    {
+      "name": "account",
+      "description": "Account operations"
+    },
+    {
+      "name": "position",
+      "description": "Positions"
+    },
+    {
+      "name": "cursillo",
+      "description": "Cursillos"
+    },
+    {
+      "name": "location",
+      "description": "Locations"
+    },
+    {
+      "name": "talk",
+      "description": "Talks"
+    },
+    {
+      "name": "talkLink",
+      "description": "TalkLinks"
+    },
+    {
+      "name": "parish",
+      "description": "Parishes"
+    },
+    {
+      "name": "weekend",
+      "description": "Weekends"
+    },
+    {
+      "name": "weekendPosition",
+      "description": "WeekendPositions"
+    },
+    {
+      "name": "person",
+      "description": "People"
+    },
+    {
+      "name": "team",
+      "description": "Teams"
+    },
+    {
+      "name": "role",
+      "description": "Roles"
+    },
+    {
+      "name": "contact",
+      "description": "Contacts"
+    },
+    {
+      "name": "application",
+      "description": "ApplicationInfos"
+    }
+  ],
+  "schemes":[
+    "http"
+  ],
+  "paths":{
+    "/accounts/authenticated": {
+      "get":{
+        "tags":[
+          "account"
+        ],
+        "summary":"Return account for authenticated user.",
+        "description":"",
+        "operationId":"isAuthenticated",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"Access Token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"Invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/accounts":{
+      "post":{
+        "tags":[
+          "account"
+        ],
+        "summary":"Create a new user",
+        "description":"",
+        "operationId":"createAccount",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new account",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Account"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"Bad account object."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "get":{
+        "tags":[
+          "account"
+        ],
+        "summary":"Get all users.",
+        "description":"",
+        "operationId":"getAccounts",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"Access Token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "500":{
+            "description":"Error executing request."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/accounts/{accountId}": {
+      "get":{
+        "tags":[
+          "account"
+        ],
+        "summary":"Get account by id.",
+        "description":"",
+        "operationId":"getAccount",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"path",
+            "name":"accountId",
+            "description":"Account Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          },
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"Access Token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"Invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "put":{
+        "tags":[
+          "account"
+        ],
+        "summary":"Update account by id.",
+        "description":"",
+        "operationId":"updateAccount",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"Access Token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"accountId",
+            "description":"Account Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new account",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Account"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"Invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "delete":{
+        "tags":[
+          "account"
+        ],
+        "summary":"Delete account by id.",
+        "description":"",
+        "operationId":"deleteAccount",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"Access Token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"accountId",
+            "description":"Account Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"Invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+
+    },
+    "/accounts/login":{
+      "post":{
+        "tags":[
+          "account"
+        ],
+        "summary":"Login",
+        "description":"",
+        "operationId":"login",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Credentials",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Credentials"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"Invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/accounts/logout": {
+      "get":{
+        "tags":[
+          "account"
+        ],
+        "summary":"Logout",
+        "description":"",
+        "operationId":"logout",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"Access Token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"Invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+
+    },
+    "/positions": {
+      "get":{
+        "tags":[
+          "position"
+        ],
+        "summary":"Gets all positions.",
+        "description":"",
+        "operationId":"getPositions",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"Access Token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"Invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "post":{
+        "tags":[
+          "position"
+        ],
+        "summary":"Creates a new position.",
+        "description":"",
+        "operationId":"createPosition",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"Access Token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new position",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Position"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"Invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/positions/{positionId}": {
+      "get":{
+        "tags":[
+          "position"
+        ],
+        "summary":"Return position with Id positionId.",
+        "description":"",
+        "operationId":"getPositionById",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"Access Token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"positionId",
+            "description":"Position Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"Invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "put":{
+        "tags":[
+          "position"
+        ],
+        "summary":"Updates an existing position.",
+        "description":"",
+        "operationId":"updatePosition",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"Access Token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"positionId",
+            "description":"Id of position being updated.",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Position"
+            }
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new position",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Position"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"Invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "delete":{
+        "tags":[
+          "position"
+        ],
+        "summary":"Delete position with Id positionId.",
+        "description":"",
+        "operationId":"deletePositionById",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"Access Token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"positionId",
+            "description":"Position Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"Invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/positions/{positionId}/people": {
+      "get":{
+        "tags":[
+          "position"
+        ],
+        "summary":"Gets all people for a position.",
+        "description":"",
+        "operationId":"getPeopleByPositionId",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"Access Token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"positionId",
+            "description":"Position Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"Invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/applications": {
+      "get":{
+        "tags":[
+          "application"
+        ],
+        "summary":"gets all applications.",
+        "description":"",
+        "operationId":"getApplications",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "post":{
+        "tags":[
+          "application"
+        ],
+        "summary":"creates a new application.",
+        "description":"",
+        "operationId":"createApplication",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"create a new application",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/ApplicationInfo"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/applications/{applicationId}": {
+      "get":{
+        "tags":[
+          "application"
+        ],
+        "summary":"return contact with id application id.",
+        "description":"",
+        "operationId":"getApplicationById",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"applicationId",
+            "description":"application id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "put":{
+        "tags":[
+          "application"
+        ],
+        "summary":"updates an existing application.",
+        "description":"",
+        "operationId":"updateApplication",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"applicationId",
+            "description":"id of application being updated.",
+            "required":true
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"create a new application",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/ApplicationInfo"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "delete":{
+        "tags":[
+          "application"
+        ],
+        "summary":"delete application with id applicationId.",
+        "description":"",
+        "operationId":"deleteApplicationById",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"applicationId",
+            "description":"application id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/contacts": {
+      "get":{
+        "tags":[
+          "contact"
+        ],
+        "summary":"gets all contacts.",
+        "description":"",
+        "operationId":"getcontacts",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "post":{
+        "tags":[
+          "contact"
+        ],
+        "summary":"creates a new contact.",
+        "description":"",
+        "operationId":"createcontact",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"create a new contact",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Contact"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/contacts/{contactid}": {
+      "get":{
+        "tags":[
+          "contact"
+        ],
+        "summary":"return contact with id contactid.",
+        "description":"",
+        "operationId":"getcontactbyid",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"contactid",
+            "description":"contact id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "put":{
+        "tags":[
+          "contact"
+        ],
+        "summary":"updates an existing contact.",
+        "description":"",
+        "operationId":"updatecontact",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"contactid",
+            "description":"id of contact being updated.",
+            "required":true
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"create a new contact",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Contact"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "delete":{
+        "tags":[
+          "contact"
+        ],
+        "summary":"delete contact with id contactid.",
+        "description":"",
+        "operationId":"deletecontactbyid",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"contactid",
+            "description":"contact id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/cursillos": {
+      "get":{
+        "tags":[
+          "cursillo"
+        ],
+        "summary":"gets all cursillos.",
+        "description":"",
+        "operationId":"getcursillos",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "post":{
+        "tags":[
+          "cursillo"
+        ],
+        "summary":"creates a new cursillo.",
+        "description":"",
+        "operationId":"createcursillo",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"create a new cursillo",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Cursillo"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/cursillos/{cursilloid}": {
+      "get":{
+        "tags":[
+          "cursillo"
+        ],
+        "summary":"return cursillo with id cursilloid.",
+        "description":"",
+        "operationId":"getcursillobyid",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"cursilloid",
+            "description":"cursillo id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "put":{
+        "tags":[
+          "cursillo"
+        ],
+        "summary":"updates an existing cursillo.",
+        "description":"",
+        "operationId":"updatecursillo",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"cursilloid",
+            "description":"id of cursillo being updated.",
+            "required":true
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"create a new cursillo",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Cursillo"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "delete":{
+        "tags":[
+          "cursillo"
+        ],
+        "summary":"delete cursillo with id cursilloid.",
+        "description":"",
+        "operationId":"deletecursillobyid",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"cursilloid",
+            "description":"cursillo id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/cursillos/{cursilloId}/locations": {
+      "get":{
+        "tags":[
+          "cursillo"
+        ],
+        "summary":"return locations that belong to the Cursillo with Id cursilloId",
+        "description":"",
+        "operationid":"getLocationsForCursilloById",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"cursilloId",
+            "description":"Cursillo Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/cursillos/{cursilloId}/parishes": {
+      "get":{
+        "tags":[
+          "cursillo"
+        ],
+        "summary":"return parishes that belong to the Cursillo with Id cursilloId",
+        "description":"",
+        "operationid":"getParishesForCursilloById",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"cursilloId",
+            "description":"Cursillo Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/locations": {
+      "get":{
+        "tags":[
+          "location"
+        ],
+        "summary":"gets all locations.",
+        "description":"",
+        "operationId":"getlocations",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "post":{
+        "tags":[
+          "location"
+        ],
+        "summary":"Creates a new location.",
+        "description":"",
+        "operationId":"createLocation",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new location",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Location"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/locations/{locationId}": {
+      "get":{
+        "tags":[
+          "location"
+        ],
+        "summary":"return location with id locationId.",
+        "description":"",
+        "operationId":"getLocationbyId",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"locationId",
+            "description":"location id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "put":{
+        "tags":[
+          "location"
+        ],
+        "summary":"updates an existing location.",
+        "description":"",
+        "operationId":"updateLocation",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"locationId",
+            "description":"id of location being updated.",
+            "required":true
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"create a new location",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Location"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "delete":{
+        "tags":[
+          "location"
+        ],
+        "summary":"delete location with id locationid.",
+        "description":"",
+        "operationId":"deletelocationbyid",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"locationid",
+            "description":"location id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/weekends": {
+      "get":{
+        "tags":[
+          "weekend"
+        ],
+        "summary":"gets all weekends.",
+        "description":"",
+        "operationId":"getweekends",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "post":{
+        "tags":[
+          "weekend"
+        ],
+        "summary":"Creates a new weekend.",
+        "description":"",
+        "operationId":"createWeekend",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new weekend",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Weekend"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/weekends/{gender}/past": {
+      "get":{
+        "tags":[
+          "weekend"
+        ],
+        "summary":"return past count weekends with gender gender.",
+        "description":"",
+        "operationId":"getPastWeekendsByGender",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"query",
+            "name":"count",
+            "description":"number of weekends to get",
+            "required":true,
+            "type": "number"
+          },
+          {
+            "in":"path",
+            "name":"gender",
+            "description":"weekend gender",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/weekends/{weekendId}": {
+      "get":{
+        "tags":[
+          "weekend"
+        ],
+        "summary":"return weekend with id weekendId.",
+        "description":"",
+        "operationId":"getWeekendbyId",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"weekendId",
+            "description":"weekend id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "put":{
+        "tags":[
+          "weekend"
+        ],
+        "summary":"updates an existing weekend.",
+        "description":"",
+        "operationId":"updateWeekend",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"weekendId",
+            "description":"id of weekend being updated.",
+            "required":true
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"create a new weekend",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Weekend"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "delete":{
+        "tags":[
+          "weekend"
+        ],
+        "summary":"delete weekend with id weekendid.",
+        "description":"",
+        "operationId":"deleteweekendbyid",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"weekendid",
+            "description":"weekend id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/weekends/{weekendId}/talkLinks": {
+      "get": {
+        "tags": [
+          "weekend"
+        ],
+        "summary": "return Talk Links for weekend with id weekendId.",
+        "description": "",
+        "operationId": "getTalkLinksByWeekendId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "authorization",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "weekendId",
+            "description": "weekend id",
+            "required": true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "invalid credentials."
+          }
+        },
+        "security": [
+        ]
+      }
+    },
+    "/weekends/{weekendId}/teams": {
+      "get": {
+        "tags": [
+          "weekend"
+        ],
+        "summary": "return Teams for weekend with id weekendId.",
+        "description": "",
+        "operationId": "getTeamsByWeekendId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "authorization",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "weekendId",
+            "description": "weekend id",
+            "required": true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "invalid credentials."
+          }
+        },
+        "security": [
+        ]
+      }
+    },
+    "/weekendPositions": {
+      "get":{
+        "tags":[
+          "weekendPosition"
+        ],
+        "summary":"gets all weekendPositions.",
+        "description":"",
+        "operationId":"getweekendPositions",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "post":{
+        "tags":[
+          "weekendPosition"
+        ],
+        "summary":"Creates a new weekendPosition.",
+        "description":"",
+        "operationId":"createWeekendPosition",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new weekendPosition",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/WeekendPosition"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/weekendPositions/{weekendPositionId}": {
+      "get":{
+        "tags":[
+          "weekendPosition"
+        ],
+        "summary":"return weekendPosition with id weekendPositionId.",
+        "description":"",
+        "operationId":"getWeekendPositionbyId",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"weekendPositionId",
+            "description":"weekendPosition id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "put":{
+        "tags":[
+          "weekendPosition"
+        ],
+        "summary":"updates an existing weekendPosition.",
+        "description":"",
+        "operationId":"updateWeekendPosition",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"weekendPositionId",
+            "description":"id of weekendPosition being updated.",
+            "required":true
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"create a new weekendPosition",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/WeekendPosition"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "delete":{
+        "tags":[
+          "weekendPosition"
+        ],
+        "summary":"delete weekendPosition with id weekendPositionid.",
+        "description":"",
+        "operationId":"deleteweekendPositionbyid",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"weekendPositionid",
+            "description":"weekendPosition id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/talks": {
+      "get":{
+        "tags":[
+          "talk"
+        ],
+        "summary":"Gets all talks.",
+        "description":"",
+        "operationId":"Get Talks",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "post":{
+        "tags":[
+          "talk"
+        ],
+        "summary":"Creates a new talk.",
+        "description":"",
+        "operationId":"createTalk",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new talk",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Talk"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/talks/{talkId}": {
+      "get":{
+        "tags":[
+          "talk"
+        ],
+        "summary":"Return talk with Id talkId.",
+        "description":"",
+        "operationId":"getTalkbyId",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"talkId",
+            "description":"Talk Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "put":{
+        "tags":[
+          "talk"
+        ],
+        "summary":"Updates an existing Talk.",
+        "description":"",
+        "operationId":"updateTalk",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"talkId",
+            "description":"Id of talk being updated.",
+            "required":true
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new talk.",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Talk"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "delete":{
+        "tags":[
+          "talk"
+        ],
+        "summary":"Delete Talk with Id talkId.",
+        "description":"",
+        "operationId":"deleteTalkById",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"talkId",
+            "description":"Talk Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/talks/{talkId}/people": {
+      "get":{
+        "tags":[
+          "talk"
+        ],
+        "summary":"Return people that have had talk with Id talkId.",
+        "description":"",
+        "operationId":"getPeopleByTalkId",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"talkId",
+            "description":"Talk Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/talkLinks": {
+      "get":{
+        "tags":[
+          "talkLink"
+        ],
+        "summary":"Gets all talkLinks.",
+        "description":"",
+        "operationId":"Get TalkLinks",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "post":{
+        "tags":[
+          "talkLink"
+        ],
+        "summary":"Creates a new talkLink.",
+        "description":"",
+        "operationId":"createTalkLink",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new talkLink",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/TalkLink"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/talkLinks/{talkLinkId}": {
+      "get":{
+        "tags":[
+          "talkLink"
+        ],
+        "summary":"Return talkLink with Id talkLinkId.",
+        "description":"",
+        "operationId":"getTalkLinkbyId",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"talkLinkId",
+            "description":"TalkLink Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "put":{
+        "tags":[
+          "talkLink"
+        ],
+        "summary":"Updates an existing TalkLink.",
+        "description":"",
+        "operationId":"updateTalkLink",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"talkLinkId",
+            "description":"Id of talkLink being updated.",
+            "required":true
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new talkLink.",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/TalkLink"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "delete":{
+        "tags":[
+          "talkLink"
+        ],
+        "summary":"Delete TalkLink with Id talkLinkId.",
+        "description":"",
+        "operationId":"deleteTalkLinkById",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"talkLinkId",
+            "description":"TalkLink Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/roles": {
+      "get":{
+        "tags":[
+          "role"
+        ],
+        "summary":"Gets all roles.",
+        "description":"",
+        "operationId":"Get Roles",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "post":{
+        "tags":[
+          "role"
+        ],
+        "summary":"Creates a new role.",
+        "description":"",
+        "operationId":"createRole",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new role",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Role"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/roles/{roleId}": {
+      "get":{
+        "tags":[
+          "role"
+        ],
+        "summary":"Return role with Id roleId.",
+        "description":"",
+        "operationId":"getRolebyId",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"roleId",
+            "description":"Role Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "put":{
+        "tags":[
+          "role"
+        ],
+        "summary":"Updates an existing Role.",
+        "description":"",
+        "operationId":"updateRole",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"roleId",
+            "description":"Id of role being updated.",
+            "required":true
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new role.",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Role"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "delete":{
+        "tags":[
+          "role"
+        ],
+        "summary":"Delete Role with Id roleId.",
+        "description":"",
+        "operationId":"deleteRoleById",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"roleId",
+            "description":"Role Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/teams": {
+      "get":{
+        "tags":[
+          "team"
+        ],
+        "summary":"Gets all teams.",
+        "description":"",
+        "operationId":"Get Teams",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "post":{
+        "tags":[
+          "team"
+        ],
+        "summary":"Creates a new team.",
+        "description":"",
+        "operationId":"createTeam",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new team",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Team"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/teams/{teamId}": {
+      "get":{
+        "tags":[
+          "team"
+        ],
+        "summary":"Return team with Id teamId.",
+        "description":"",
+        "operationId":"getTeambyId",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"teamId",
+            "description":"Team Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "put":{
+        "tags":[
+          "team"
+        ],
+        "summary":"Updates an existing Team.",
+        "description":"",
+        "operationId":"updateTeam",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"teamId",
+            "description":"Id of team being updated.",
+            "required":true
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new team.",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Team"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "delete":{
+        "tags":[
+          "team"
+        ],
+        "summary":"Delete Team with Id teamId.",
+        "description":"",
+        "operationId":"deleteTeamById",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"teamId",
+            "description":"Team Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/teams/{teamId}/weekendPositions": {
+      "get":{
+        "tags":[
+          "team"
+        ],
+        "summary":"Return weekend positions for team with Id teamId.",
+        "description":"",
+        "operationId":"getWeekendPositionsByTeamId",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"teamId",
+            "description":"Team Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "delete":{
+        "tags":[
+          "team"
+        ],
+        "summary":"Deletes weekend positions for team with Id teamId.",
+        "description":"",
+        "operationId":"deleteWeekendPositionsByTeamId",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"teamId",
+            "description":"Team Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/people": {
+      "get":{
+        "tags":[
+          "person"
+        ],
+        "summary":"Gets all people.",
+        "description":"",
+        "operationId":"Get People",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "post":{
+        "tags":[
+          "person"
+        ],
+        "summary":"Creates a new person.",
+        "description":"",
+        "operationId":"createPerson",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new person",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Person"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/people/{personId}": {
+      "get":{
+        "tags":[
+          "person"
+        ],
+        "summary":"Return person with Id personId.",
+        "description":"",
+        "operationId":"getPersonbyId",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"personId",
+            "description":"Person Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "put":{
+        "tags":[
+          "person"
+        ],
+        "summary":"Updates an existing Person.",
+        "description":"",
+        "operationId":"updatePerson",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"personId",
+            "description":"Id of person being updated.",
+            "required":true
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new person.",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Person"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "delete":{
+        "tags":[
+          "person"
+        ],
+        "summary":"Delete Person with Id personId.",
+        "description":"",
+        "operationId":"deletePersonById",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"personId",
+            "description":"Person Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/people/{personId}/talkLinks": {
+      "get":{
+        "tags":[
+          "person"
+        ],
+        "summary":"Return talk links for person with Id personId.",
+        "description":"",
+        "operationId":"getTalkLinksByPersonId",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"query",
+            "name":"weekendIds",
+            "description":"array of weekend ids to return weekend positions for.",
+            "required":false,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"personId",
+            "description":"Person Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/people/{personId}/weekendPositions": {
+      "get":{
+        "tags":[
+          "person"
+        ],
+        "summary":"Return weekend positions for person with Id personId.",
+        "description":"",
+        "operationId":"getWeekendPositionsByPersonId",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"query",
+            "name":"weekendIds",
+            "description":"array of weekend ids to return weekend positions for.",
+            "required":false,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"personId",
+            "description":"Person Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/people/{personId}/application": {
+      "get":{
+        "tags":[
+          "person"
+        ],
+        "summary":"Return application for person with Id personId.",
+        "description":"",
+        "operationId":"getApplicationByPersonId",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"personId",
+            "description":"Person Id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/parishes": {
+      "get":{
+        "tags":[
+          "parish"
+        ],
+        "summary":"gets all parishes.",
+        "description":"",
+        "operationId":"getParishes",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "post":{
+        "tags":[
+          "parish"
+        ],
+        "summary":"Creates a new parish.",
+        "description":"",
+        "operationId":"createParish",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"Create a new parish",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Parish"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    },
+    "/parishes/{parishId}": {
+      "get":{
+        "tags":[
+          "parish"
+        ],
+        "summary":"return parish with id parishId.",
+        "description":"",
+        "operationId":"getParishbyId",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"parishId",
+            "description":"parish id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "put":{
+        "tags":[
+          "parish"
+        ],
+        "summary":"updates an existing parish.",
+        "description":"",
+        "operationId":"updateParish",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"parishId",
+            "description":"id of parish being updated.",
+            "required":true
+          },
+          {
+            "in":"body",
+            "name":"body",
+            "description":"create a new parish",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/Parish"
+            }
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      },
+      "delete":{
+        "tags":[
+          "parish"
+        ],
+        "summary":"delete parish with id parishId.",
+        "description":"",
+        "operationId":"deleteParishById",
+        "consumes":[
+          "application/json"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "parameters":[
+          {
+            "in":"query",
+            "name":"authorization",
+            "description":"access token",
+            "required":true,
+            "type": "string"
+          },
+          {
+            "in":"path",
+            "name":"parishid",
+            "description":"parish id",
+            "required":true,
+            "type": "integer",
+            "form": "int32"
+          }
+        ],
+        "responses":{
+          "400":{
+            "description":"invalid credentials."
+          }
+        },
+        "security":[
+
+        ]
+      }
+    }
+  },
+  "securityDefinitions":{
+    "petstore_auth":{
+      "type":"oauth2",
+      "authorizationUrl":"http://petstore.swagger.io/oauth/dialog",
+      "flow":"implicit",
+      "scopes":{
+        "write:pets":"modify pets in your account",
+        "read:pets":"read your pets"
+      }
+    },
+    "api_key":{
+      "type":"apiKey",
+      "name":"api_key",
+      "in":"header"
+    }
+  },
+  "definitions":{
+    "Account":{
+      "type":"object",
+      "properties":{
+        "id":{
+          "type":"integer",
+          "format":"int64"
+        },
+        "username":{
+          "type":"string"
+        },
+        "firstName":{
+          "type":"string"
+        },
+        "lastName":{
+          "type":"string"
+        },
+        "email":{
+          "type":"string"
+        },
+        "password":{
+          "type":"string"
+        },
+        "tagName":{
+          "type":"string"
+        },
+        "street":{
+          "type":"string"
+        },
+        "zip":{
+          "type":"string"
+        },
+        "homePhone":{
+          "type":"integer",
+          "format":"int64"
+        },
+        "workPhone":{
+          "type":"integer",
+          "format":"int64"
+        },
+        "birthdate":{
+          "type":"date"
+        },
+        "occupation":{
+          "type":"string"
+        },
+        "maritalStatus":{
+          "type":"string"
+        },
+        "gender":{
+          "type":"string"
+        },
+        "saint":{
+          "type":"string"
+        },
+        "pastor":{
+          "type":"string"
+        },
+        "sponsor":{
+          "type":"string"
+        },
+        "isTeamMemeber":{
+          "type":"boolean"
+        },
+        "dateStarted":{
+          "type":"date"
+        },
+        "parishId":{
+          "type":"integer",
+          "format":"int64"
+        }
+
+      },
+      "xml":{
+        "name":"User"
+      }
+    },
+    "Position": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "required": "true"
+        },
+        "number": {
+          "type": "number",
+          "required": "true"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+
+    "ApplicationInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "required": "true"
+        },
+        "isCatholic": {
+          "type": "boolean"
+        },
+        "isConverted": {
+          "type": "boolean"
+        },
+        "convertedDate": {
+          "type": "string"
+        },
+        "receivesEucharist": {
+          "type": "boolean"
+        },
+        "pastor": {
+          "type": "string"
+        },
+        "church": {
+          "type": "string"
+        },
+        "sponsorName": {
+          "type": "string"
+        },
+        "sponsorPhone": {
+          "type": "string"
+        },
+        "reasonForApplying": {
+          "type": "string"
+        },
+        "requestLowerBunk": {
+          "type": "boolean"
+        },
+        "medicalInformation": {
+          "type": "string"
+        },
+        "personId": {
+          "type": "integer",
+          "format": "int64",
+          "required": true
+        }
+      }
+    },
+
+    "Contact": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "required": "true"
+        },
+        "firstName": {
+          "type": "string",
+          "required": "true"
+        },
+        "lastName": {
+          "type": "string",
+          "required": "true"
+        },
+        "type": {
+          "type": "string",
+          "required": "true"
+        },
+        "phone": {
+          "type": "string",
+          "required": "true"
+        },
+        "age": {
+          "type": "number"
+        },
+        "hasAttended": {
+          "type": "boolean"
+        },
+        "personId": {
+          "type": "integer",
+          "format": "int64",
+          "required": true
+        }
+      }
+    },
+    "Cursillo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "required": "true"
+        },
+        "name": {
+          "type": "string",
+          "required": "true"
+        }
+      }
+    },
+    "Location": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "required": "true"
+        },
+        "name": {
+          "type": "string",
+          "required": "true"
+        },
+        "cursilloId": {
+          "type": "integer",
+          "format": "int64",
+          "required": "true"
+        }
+      }
+    },
+    "Talk": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "required": "true"
+        },
+        "name": {
+          "type": "string",
+          "required": "true"
+        },
+        "number": {
+          "type": "number"
+        },
+        "description": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "boolean"
+        }
+      }
+    },
+    "TalkLink": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "required": "true"
+        },
+        "status": {
+          "type": "string",
+          "required": "true"
+        },
+        "talkId": {
+          "type": "integer",
+          "format": "int64",
+          "required": true
+        },
+        "personId": {
+          "type": "integer",
+          "format": "int64",
+          "required": true
+        },
+        "weekendId": {
+          "type": "integer",
+          "format": "int64",
+          "required": true
+        }
+
+      }
+    },
+    "Person": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "required": true
+        },
+        "firstName": {
+          "type": "string",
+          "required": true
+        },
+        "lastName": {
+          "type": "string",
+          "required": true
+        },
+        "email": {
+          "type": "string",
+          "required": true
+        },
+        "homePhone": {
+          "type": "string"
+        },
+        "workPhone": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "number"
+        },
+        "birthdate": {
+          "type": "string"
+        },
+        "occupation": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "isTeamMember": {
+          "type": "boolean",
+          "required": true,
+          "default": false
+        },
+        "dateStarted": {
+          "type": "string"
+        },
+        "tagName": {
+          "type": "string"
+        },
+        "parishId": {
+          "type": "integer",
+          "format": "int64",
+          "required": true
+        }
+      }
+    },
+    "Parish": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "required": "true"
+        },
+        "name": {
+          "type": "string",
+          "required": "true"
+        },
+        "city": {
+          "type": "string",
+          "required": "true"
+        },
+        "area": {
+          "type": "string",
+          "required": "true"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "cursilloId": {
+          "type": "integer",
+          "format": "int64",
+          "required": "true"
+        }
+      }
+    },
+    "Weekend": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "number",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        },
+        "startDate": {
+          "type": "string"
+        },
+        "endDate": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "isCompleted": {
+          "type": "boolean"
+        },
+        "gender": {
+          "type": "string",
+          "required": true
+        },
+        "locationId": {
+          "type": "integer",
+          "format": "int64",
+          "required": true
+        }
+      }
+    },
+    "WeekendPosition": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string"
+        },
+        "teamId": {
+          "type": "integer",
+          "format": "int64",
+          "required": true
+        },
+        "personId": {
+          "type": "integer",
+          "format": "int64",
+          "required": true
+        },
+        "positionId": {
+          "type": "integer",
+          "format": "int64",
+          "required": true
+        }
+      }
+    },
+    "Team": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        },
+        "isTable": {
+          "type": "boolean"
+        },
+        "weekendId": {
+          "type": "integer",
+          "format": "int64",
+          "required": true
+        }
+
+      }
+    },
+    "Role": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Credentials": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "ApiResponse":{
+      "type":"object",
+      "properties":{
+        "code":{
+          "type":"integer",
+          "format":"int32"
+        },
+        "type":{
+          "type":"string"
+        },
+        "message":{
+          "type":"string"
+        }
+      }
+    }
+  }
+
+}

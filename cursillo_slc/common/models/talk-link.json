@@ -1,0 +1,29 @@
+{
+  "name": "TalkLink",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "status": {
+      "type": "string",
+      "required": "true"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "talk": {
+      "type": "belongsTo",
+      "model": "Talk",
+      "foreignKey": ""
+    },
+    "person": {
+      "type": "belongsTo",
+      "model": "Person",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

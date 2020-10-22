@@ -1,0 +1,53 @@
+{
+  "name": "Weekend",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "number": {
+      "type": "number",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "string"
+    },
+    "endDate": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "isCompleted": {
+      "type": "boolean"
+    },
+    "gender": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "talkLinks": {
+      "type": "hasMany",
+      "model": "TalkLink",
+      "foreignKey": ""
+    },
+    "teams": {
+      "type": "hasMany",
+      "model": "Team",
+      "foreignKey": ""
+    },
+    "location": {
+      "type": "belongsTo",
+      "model": "Location",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

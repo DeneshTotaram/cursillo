@@ -1,0 +1,95 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "mysql",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "mysql",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "mysql",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "mysql",
+    "public": false
+  },
+  "Person": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Contact": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "ApplicationInfo": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Position": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Image": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Talk": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "TalkLink": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Weekend": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "WeekendPosition": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Team": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Location": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Cursillo": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Parish": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Account": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Table": {
+    "dataSource": "mysql",
+    "public": true
+  }
+}

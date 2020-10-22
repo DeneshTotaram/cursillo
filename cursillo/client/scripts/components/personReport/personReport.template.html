@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-md-6">
+    <h3>Position / Talk Report</h3>
+  </div>
+
+  <div class="col-md-6 text-right">
+    <button class="btn btn-primary" data-ng-click="filterWeekends()">Filter Weekends</button>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-12">
+    <h4>Position History</h4>
+
+    <table datatable="ng" dt-options="options" class="row-border hover">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Position</th>
+        <th>Status</th>
+        <th>Team Id</th>
+        <th>Weekend</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr ng-repeat="position in positions">
+        <td>{{ position.id }}</td>
+        <td>{{ position.positionName }}</td>
+        <td>{{ position.status }}</td>
+        <td>{{ position.teamId }}</td>
+        <td>{{ position.description }}</td>
+        <td>{{ position.startDate }}</td>
+        <td>{{ position.endDate }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-12">
+    <h4>Talk History</h4>
+
+    <table datatable="ng" dt-options="options" class="row-border hover">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Talk</th>
+        <th>Status</th>
+        <th>Description</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr ng-repeat="talk in talkLinks">
+        <td>{{ talk.id }}</td>
+        <td>{{ talk.talkName }}</td>
+        <td>{{ talk.status }}</td>
+        <td>{{ talk.description }}</td>
+        <td>{{ talk.startDate }}</td>
+        <td>{{ talk.endDate }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
